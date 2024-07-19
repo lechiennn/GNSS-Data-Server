@@ -43,7 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    ##
     'rest_framework',
+    'drf_yasg',
+    ##
+    'processServer',
     'process'
 ]
 
@@ -84,11 +88,11 @@ WSGI_APPLICATION = 'processServer.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mydatabase',
-        'USER': 'user',
-        'PASSWORD': 'password',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'NAME': env('DB_NAME', str, 'mydatabase'),
+        'USER': env('DB_USER', str, 'user'),
+        'PASSWORD': env('DB_PASSWORD', str, 'password'),
+        'HOST': env('DB_HOST', str, '127.0.0.1'),
+        'PORT': env('DB_PORT', str, '3306'),
     }
 }
 
@@ -128,6 +132,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
