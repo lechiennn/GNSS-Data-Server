@@ -6,5 +6,3 @@ env/
 **/__pycache__
 
 static*
-
-fake*.py
