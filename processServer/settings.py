@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'processServer.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('DB_NAME', str, 'mydatabase'),
         'USER': env('DB_USER', str, 'user'),
         'PASSWORD': env('DB_PASSWORD', str, 'password'),
@@ -141,5 +141,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 KAFKA_SETTINGS = {
     'topics': env('KAFKA_TOPIC', str, 'gnss'),
-    'bootstrap_servers': env('KAFKA_BOOTSTRAP_SERVER', str, 'localhost:9092')
+    'bootstrap_servers': env.list('KAFKA_BOOTSTRAP_SERVER')
 }

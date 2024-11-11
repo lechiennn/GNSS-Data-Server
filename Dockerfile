@@ -5,7 +5,7 @@ WORKDIR /app
 RUN apt update && apt install -y \
     build-essential \
     libpq-dev \
-    mariadb-client \
+    postgresql-client \
     && rm -rf /var/lib/apt/lists/*
 
 COPY ./requirements.txt /app/
