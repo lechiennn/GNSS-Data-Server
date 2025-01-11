@@ -11,11 +11,10 @@ env.read_env('dev.env')
 # Initialize Faker and KafkaProducer
 fake = Faker()
 Faker.seed(0)
-print(env("BOOTSTRAP_SERVERS", str, "localhost:9092"))
-print(env("STATION", str, ""))
+
 producer = KafkaProducer(
     bootstrap_servers=["100.126.64.51:9092",
-                       "100.121.65.76:9092", "100.103.166.107:9092"],
+                       "100.121.65.76:9092", "100.81.5.77:9092"],
     value_serializer=lambda v: json.dumps(v).encode('utf-8')
 )
 
@@ -23,7 +22,7 @@ producer = KafkaProducer(
 def generate_fake_data():
     # Generate a dictionary of fake data
     return {
-        'station': env("STATION", str, "4140b1fb-b09b-4ef4-b71f-b49451134776"),
+        'station': "011d2e64-0c44-4f0d-89ff-df90a8da1201",
         'temperature': fake.pyfloat(right_digits=2, min_value=10, max_value=40),
         'precipitation': fake.pyfloat(right_digits=2, min_value=0, max_value=200),
         'created_at': datetime.now(timezone.utc).isoformat()

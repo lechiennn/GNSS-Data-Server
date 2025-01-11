@@ -12,4 +12,4 @@ class StationAdmin(admin.ModelAdmin):
 
 @admin.register(Data)
 class DataAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('temperature', 'precipitation', 'created_at')
